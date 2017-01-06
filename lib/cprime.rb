@@ -17,6 +17,14 @@ class Cprime
 	end
 
 	def generate_primes(n)
-		return @known_primes
+		generated_primes = []
+		i = 0
+		while generated_primes.length < n do
+			if is_prime?(i) == true then
+				generated_primes.push(i)
+			end
+			i += 1
+		end
+		return generated_primes
 	end
 end
