@@ -17,6 +17,6 @@ class Cprime
 	end
 
 	def generate_primes(n)
-		
+		return @known_primes
 	end
 end

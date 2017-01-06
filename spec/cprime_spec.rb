@@ -1,9 +1,7 @@
 require 'cprime'
-require 'benchmark'
 
 RSpec.describe Cprime, ".is_prime?" do
 	context "with no known primes" do
-
 		it "returns true for a prime number" do
 			cprime = Cprime.new
 			expect(cprime.is_prime?(7)).to eq true
@@ -36,6 +34,22 @@ RSpec.describe Cprime, ".is_prime?" do
 			second_run_time = (end_time - beginning_time)*1000
 
 			expect(first_run_time).to be > second_run_time
+		end
+	end
+end
+
+RSpec.describe Cprime, ".generate_primes" do
+	context "with no known primes" do
+		it "generates the correct number of primes" do
+			cprime = Cprime.new
+			produced_array = cprime.generate_primes(10)
+			expect(produced_array.length).to eq 10
+		end
+
+		it "returns a correct list of primes" do
+			cprime = Cprime.new
+			expected_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+			expect(cprime.generate_primes(10)).to eq expected_primes
 		end
 	end
 end
