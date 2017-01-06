@@ -9,26 +9,26 @@ def main(cprime)
 		max_number_width = (num_array[-1] * num_array[-1]).to_s
 		column_width = max_number_width.length + 1
 
-		y = 0
+		# print x-axis of primes
 		print "\n" + " " * column_width
-		num_array.each do
-			print num_array[y].to_s.rjust(column_width)
-			y += 1
+		num_array.each do |y|
+			print y.to_s.rjust(column_width)
 		end
-
+		# print y-axis divider for table
 		print "\n" + " " * column_width + "_" * column_width * num_array.length + "\n"
 
-		y = 0
-		num_array.each do
-			x = 0
-			print num_array[y].to_s.rjust(column_width - 1)
+		# print multiplication table rows
+		num_array.each do |y|
+			# print y-axis of primes
+			print y.to_s.rjust(column_width - 1)
+			# print x-axis divider for table
 			print "|"
-			num_array.each do
-				print (num_array[y] * num_array[x]).to_s.rjust(column_width)
-				x += 1
+
+			# print multiplication table columns
+			num_array.each do |x|
+				print (y * x).to_s.rjust(column_width)
 			end
 			print "\n"
-			y += 1
 		end
 	end
 
