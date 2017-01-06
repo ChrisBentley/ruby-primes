@@ -3,34 +3,35 @@
 require_relative('lib/cprime')
 
 
-def main(cprime)
+def print_multiplication_table(num_array)
+	max_number_width = (num_array[-1] * num_array[-1]).to_s
+	column_width = max_number_width.length + 1
 
-	def print_multiplication_table(num_array)
-		max_number_width = (num_array[-1] * num_array[-1]).to_s
-		column_width = max_number_width.length + 1
-
-		# print x-axis of primes
-		print "\n" + " " * column_width
-		num_array.each do |y|
-			print y.to_s.rjust(column_width)
-		end
-		# print y-axis divider for table
-		print "\n" + " " * column_width + "_" * column_width * num_array.length + "\n"
-
-		# print multiplication table rows
-		num_array.each do |y|
-			# print y-axis of primes
-			print y.to_s.rjust(column_width - 1)
-			# print x-axis divider for table
-			print "|"
-
-			# print multiplication table columns
-			num_array.each do |x|
-				print (y * x).to_s.rjust(column_width)
-			end
-			print "\n"
-		end
+	# print x-axis of primes
+	print "\n" + " " * column_width
+	num_array.each do |y|
+		print y.to_s.rjust(column_width)
 	end
+	# print y-axis divider for table
+	print "\n" + " " * column_width + "_" * column_width * num_array.length + "\n"
+
+	# print multiplication table rows
+	num_array.each do |y|
+		# print y-axis of primes
+		print y.to_s.rjust(column_width - 1)
+		# print x-axis divider for table
+		print "|"
+
+		# print multiplication table columns
+		num_array.each do |x|
+			print (y * x).to_s.rjust(column_width)
+		end
+		print "\n"
+	end
+end
+
+
+def main(cprime)
 
 	number_of_primes = false
 	while !number_of_primes
@@ -50,7 +51,9 @@ def main(cprime)
 end
 
 
-cprime = Cprime.new
-while true
-	main(cprime)
+if __FILE__ == $0
+	cprime = Cprime.new
+	while true
+		main(cprime)
+	end
 end
